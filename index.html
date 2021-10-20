@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Obowiązków</title>
 </head>
+
 <body>
-    <h1>Lista zadań
-    <h2>cześć <span id="name"></span> twoje zadania na dziś</h2>
-    </h1>
+    <h1>Lista zadań</h1>
+    <h2>cześć <span id="name"></span> twoje zadania na dziś:</h2>
+    <div id="tasklist">
+
+
+    </div>
+    <h2>Dodaj nowe zadanie:</h2>
+    <input type="text" name="" id="task">
+    <button onclick="addtask()">Dodaj</button>
     <script>
         // window.localStorage.setItem('name', 'Krystian'); // tak zapisujemy do magazynu
-        if(window.localStorage.getItem('name') === null){ //jeśli nie ma zapisu o takim kluczu zwraca null
+        if (window.localStorage.getItem('name') === null) { //jeśli nie ma zapisu o takim kluczu zwraca null
             let name = window.prompt("podaj imię:"); //wyświetl okienko z zapytaniem
             window.localStorage.setItem('name', name); //zapisz imię do magazynu
         }
         document.getElementById('name').innerHTML = window.localStorage.getItem('name');
+        document.getElementById('tasklist').innerHTML = window.localStorage.getItem('task');
+        function addtask() {
+            let task = document.getElementById('task').value;
+            window.localStorage.setItem('task', task);
+            document.getElementById('tasklist').innerHTML = window.localStorage.getItem('task');
+        }
+
     </script>
 
 </body>
+
 </html>
