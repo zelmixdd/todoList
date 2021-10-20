@@ -29,12 +29,26 @@
         function addtask() {
             let task = document.getElementById('task').value;
             let tasklist = JSON.parse(window.localStorage.getItem('tasklist'));
-            if(tasklist === null) tasklist = Array(); //zabespieczenie w razie pustej listy
+            if (tasklist === null) tasklist = Array(); //zabespieczenie w razie pustej listy
             tasklist.push(task);
             window.localStorage.setItem('tasklist', JSON.stringify(tasklist));
             document.getElementById('tasklist').innerHTML = window.localStorage.getItem('tasklist');
+            document.getElementById('task').value = "";
+            showtasklist();
         }
-
+            function showtasklist() {
+                let taskArray = JSON.parse(window.localStorage.getItem('tasklist'));
+                if(taskArray === null) return;
+                let tasklist = document.getElementById('tasklist');
+                // console.log(taskArray)
+                let htmlbuffer = "";
+                htmlbuffer += "<ul>";
+                for (let i = 0; i <taskArray.length; i++) {
+                    htmlbuffer += "<li>"+taskArray[i]+"</li>";
+                }
+                htmlbuffer += '</ul>'
+                tasklist.innerHTML= htmlbuffer;
+            }
     </script>
 
 </body>
