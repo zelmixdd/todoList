@@ -9,10 +9,10 @@
 <body>
 
     <script>
-        window.localStorage.setItem('name', 'Krystian');
-        if(window.localStorage.getItem('name') === null){
-            let name = window.prompt("podaj imię:");
-            window.localStorage.setItem('name', name);
+        // window.localStorage.setItem('name', 'Krystian'); // tak zapisujemy do magazynu
+        if(window.localStorage.getItem('name') === null){ //jeśli nie ma zapisu o takim kluczu zwraca null
+            let name = window.prompt("podaj imię:"); //wyświetl okienko z zapytaniem
+            window.localStorage.setItem('name', name); //zapisz imię do magazynu
         }
     </script>
 
