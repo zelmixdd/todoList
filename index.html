@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -25,11 +25,14 @@
             window.localStorage.setItem('name', name); //zapisz imię do magazynu
         }
         document.getElementById('name').innerHTML = window.localStorage.getItem('name');
-        document.getElementById('tasklist').innerHTML = window.localStorage.getItem('task');
+        document.getElementById('tasklist').innerHTML = JSON.parse(window.localStorage.getItem('task'));
         function addtask() {
             let task = document.getElementById('task').value;
-            window.localStorage.setItem('task', task);
-            document.getElementById('tasklist').innerHTML = window.localStorage.getItem('task');
+            let tasklist = JSON.parse(window.localStorage.getItem('tasklist'));
+            if(tasklist === null) tasklist = Array(); //zabespieczenie w razie pustej listy
+            tasklist.push(task);
+            window.localStorage.setItem('tasklist', JSON.stringify(tasklist));
+            document.getElementById('tasklist').innerHTML = window.localStorage.getItem('tasklist');
         }
 
     </script>
